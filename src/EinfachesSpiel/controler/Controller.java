@@ -4,6 +4,7 @@ import EinfachesSpiel.Model.GewinnModel;
 import EinfachesSpiel.view.ViewFrame;
 import EinfachesSpiel.view.ViewPanel;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -62,6 +63,11 @@ public class Controller implements ActionListener {
 
         view.getDeineZahl().setEditable(false);
         view.getNochEinmalBtn().setEnabled(true);
+
+        // aus version-2.0
+        Color rueckmeldung = ermittleFarbe();
+        view.getRundenergebnisWert().setBackground(rueckmeldung);
+        view.getGesamtpunkteWert().setBackground(rueckmeldung);
     }
 
     private void neueRunde() {
@@ -71,7 +77,21 @@ public class Controller implements ActionListener {
 
         view.getDeineZahl().setEditable(true);
         view.getNochEinmalBtn().setEnabled(false);
+
+        view.getRundenergebnisWert().setBackground(Color.WHITE);
+        view.getGesamtpunkteWert().setBackground(Color.WHITE);
+
         view.getDeineZahl().requestFocus();
+    }
+
+    private Color ermittleFarbe() {
+        if (model.hatGewonnen() || model.getRundenErgebnis() > 0) {
+            return Color.GREEN;
+        }
+        if (model.hatVerloren() || model.getRundenErgebnis() < 0) {
+            return Color.RED;
+        }
+        return Color.WHITE;
     }
 
     private String formatErgebnis(int rundenErgebnis) {
