@@ -59,12 +59,18 @@ public class Controller implements ActionListener {
         view.getComputerZahl().setText(String.valueOf(model.getComputerZahl()));
         view.getRundenergebnisWert().setText(formatErgebnis(model.getRundenErgebnis()));
         view.getGesamtpunkteWert().setText(String.valueOf(model.getGesamtPunkte()));
+
+        view.getDeineZahl().setEditable(false);
+        view.getNochEinmalBtn().setEnabled(true);
     }
 
     private void neueRunde() {
         view.getDeineZahl().setText("");
         view.getComputerZahl().setText("");
         view.getRundenergebnisWert().setText("Tippe eine Zahl von 1 bis 9");
+
+        view.getDeineZahl().setEditable(true);
+        view.getNochEinmalBtn().setEnabled(false);
         view.getDeineZahl().requestFocus();
     }
 

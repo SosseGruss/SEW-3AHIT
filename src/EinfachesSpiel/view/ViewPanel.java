@@ -49,6 +49,7 @@ public class ViewPanel extends JPanel {
         centerPanel.add(computerPanel);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
+        nochEinmalBtn.setEnabled(false);
         buttonPanel.add(nochEinmalBtn);
 
         computerZahl.setEditable(false);
