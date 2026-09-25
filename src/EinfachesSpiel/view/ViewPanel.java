@@ -5,19 +5,19 @@ import java.awt.*;
 
 public class ViewPanel extends JPanel {
 
-    private JLabel rundenergebnisHeader = new JLabel("Rundenergebnis:");
-    private JLabel gesamtpunkteHeader = new JLabel("Gesamtpunkte:");
+    private final JLabel rundenergebnisHeader = new JLabel("Rundenergebnis:");
+    private final JLabel gesamtpunkteHeader = new JLabel("Gesamtpunkte:");
 
-    private JLabel rundenergebnisWert = new JLabel("Tippe eine Zahl von 1 bis 9");
-    private JLabel gesamtpunkteWert = new JLabel("30");
+    private final JLabel rundenergebnisWert = new JLabel("Tippe eine Zahl von 1 bis 9");
+    private final JLabel gesamtpunkteWert = new JLabel("30");
 
-    private JLabel deineZahlLabel = new JLabel("Deine Zahl:");
-    private JLabel computerLabel = new JLabel("Computer:");
+    private final JLabel deineZahlLabel = new JLabel("Deine Zahl:");
+    private final JLabel computerLabel = new JLabel("Computer:");
 
-    private JTextField deineZahl = new JTextField();
-    private JTextField computerZahl = new JTextField();
+    private final JTextField deineZahl = new JTextField();
+    private final JTextField computerZahl = new JTextField();
 
-    private JButton nochEinmalBtn = new JButton("Noch einmal!");
+    private final JButton nochEinmalBtn = new JButton("Noch einmal!");
 
     public ViewPanel() {
         JPanel headerPanel = new JPanel(new GridLayout(2, 2));
@@ -57,5 +57,9 @@ public class ViewPanel extends JPanel {
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
 
-
+    public JLabel getRundenergebnisWert() { return rundenergebnisWert; }
+    public JLabel getGesamtpunkteWert() { return gesamtpunkteWert; }
+    public JTextField getDeineZahl() { return deineZahl; }
+    public JTextField getComputerZahl() { return computerZahl; }
+    public JButton getNochEinmalBtn() { return nochEinmalBtn; }
 }
