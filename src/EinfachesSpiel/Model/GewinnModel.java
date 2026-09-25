@@ -1,4 +1,4 @@
-package Model;
+package EinfachesSpiel.Model;
 
 import java.util.Random;
 
