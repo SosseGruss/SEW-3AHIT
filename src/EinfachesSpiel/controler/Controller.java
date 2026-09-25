@@ -4,6 +4,7 @@ import EinfachesSpiel.Model.GewinnModel;
 import EinfachesSpiel.view.ViewFrame;
 import EinfachesSpiel.view.ViewPanel;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,15 +60,31 @@ public class Controller implements ActionListener {
         view.getComputerZahl().setText(String.valueOf(model.getComputerZahl()));
         view.getRundenergebnisWert().setText(formatErgebnis(model.getRundenErgebnis()));
         view.getGesamtpunkteWert().setText(String.valueOf(model.getGesamtPunkte()));
+
+        Color rueckmeldung = ermittleFarbe();
+        view.getRundenergebnisWert().setBackground(rueckmeldung);
+        view.getGesamtpunkteWert().setBackground(rueckmeldung);
     }
 
     private void neueRunde() {
         view.getDeineZahl().setText("");
         view.getComputerZahl().setText("");
         view.getRundenergebnisWert().setText("Tippe eine Zahl von 1 bis 9");
+
+        view.getRundenergebnisWert().setBackground(Color.WHITE);
+        view.getGesamtpunkteWert().setBackground(Color.WHITE);
         view.getDeineZahl().requestFocus();
     }
 
+    private Color ermittleFarbe() {
+        if (model.hatGewonnen() || model.getRundenErgebnis() > 0) {
+            return Color.GREEN;
+        }
+        if (model.hatVerloren() || model.getRundenErgebnis() < 0) {
+            return Color.RED;
+        }
+        return Color.WHITE;
+    }
     private String formatErgebnis(int rundenErgebnis) {
         if (rundenErgebnis > 0) {
             return "+" + rundenErgebnis;
